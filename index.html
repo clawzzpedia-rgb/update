@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Location Tracker & Chat</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1><i class="fas fa-map-marker-alt"></i> Live Tracker</h1>
+            <div class="user-info">
+                <span id="username">Anonymous</span>
+                <button id="settings-btn" class="btn-icon">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Map Section -->
+            <div class="map-section">
+                <div id="map" class="map"></div>
+                <div class="location-controls">
+                    <button id="share-location" class="btn-primary">
+                        <i class="fas fa-location-arrow"></i> Share Location
+                    </button>
+                    <button id="stop-location" class="btn-danger" style="display:none;">
+                        <i class="fas fa-stop"></i> Stop Sharing
+                    </button>
+                    <span id="location-status" class="status"></span>
+                </div>
+            </div>
+
+            <!-- Chat Section -->
+            <div class="chat-section">
+                <div class="chat-header">
+                    <i class="fas fa-comments"></i> Chat
+                    <span id="online-users" class="online-count">0 online</span>
+                </div>
+                <div id="chat-messages" class="chat-messages"></div>
+                <div class="chat-input">
+                    <input type="text" id="message-input" placeholder="Ketik pesan...">
+                    <button id="send-message" class="btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Audio Section -->
+            <div class="audio-section">
+                <div class="audio-controls">
+                    <button id="mic-toggle" class="btn-mic">
+                        <i class="fas fa-microphone-slash"></i>
+                        <span>Mic Off</span>
+                    </button>
+                    <div class="audio-list" id="audio-list">
+                        <!-- Dynamic audio buttons will appear here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Settings</h3>
+            <div class="form-group">
+                <label>Username:</label>
+                <input type="text" id="username-input" placeholder="Masukkan nama">
+            </div>
+            <button id="save-settings" class="btn-primary">Save</button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
